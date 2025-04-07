@@ -1,0 +1,91 @@
+mqtt:
+  host: !secret mqtt_host
+  port: !secret mqtt_port
+  client_id: marstek-bridge
+  base_topic: marstek
+  discovery_prefix: homeassistant
+  retain: true
+  qos: 0
+
+modbus:
+  type: tcp
+  host: !secret modbus_host
+  port: !secret modbus_port
+  unit_id: 1
+
+sensors:
+  - name: battery_soc
+    address: 32104
+    type: holding
+    data_type: uint16
+    unit: "%"
+    device_class: battery
+    state_class: measurement
+
+  - name: battery_power
+    address: 32102
+    type: holding
+    data_type: int32
+    unit: "W"
+    device_class: power
+    state_class: measurement
+
+  - name: battery_voltage
+    address: 32100
+    type: holding
+    data_type: uint16
+    scale: 0.01
+    unit: "V"
+    device_class: voltage
+
+  - name: battery_current
+    address: 32101
+    type: holding
+    data_type: int16
+    scale: 0.01
+    unit: "A"
+    device_class: current
+
+  - name: ac_voltage
+    address: 32200
+    type: holding
+    data_type: uint16
+    scale: 0.1
+    unit: "V"
+    device_class: voltage
+
+  - name: ac_current
+    address: 32201
+    type: holding
+    data_type: int16
+    scale: 0.01
+    unit: "A"
+    device_class: current
+
+  - name: ac_power
+    address: 32202
+    type: holding
+    data_type: int32
+    unit: "W"
+    device_class: power
+
+writers:
+  - name: soc_target
+    address: 42011
+    type: holding
+    data_type: uint16
+
+  - name: force_charge_mode
+    address: 42010
+    type: holding
+    data_type: uint16
+
+  - name: force_charge_power
+    address: 42020
+    type: holding
+    data_type: uint16
+
+  - name: force_discharge_power
+    address: 42021
+    type: holding
+    data_type: uint16
