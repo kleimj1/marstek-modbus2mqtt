@@ -1,45 +1,67 @@
-# Marstek Modbus2MQTT Add-on
+# Marstek Modbus2MQTT Bridge
 
-Dieses Add-on verbindet deinen Marstek Venus / Duravolt Heimspeicher mit Home Assistant über Modbus (via Elfin EW11) und veröffentlicht die Daten über MQTT – inklusive automatischer MQTT Discovery.
+Dieses Add-on verbindet deinen **Marstek Venus / Duravolt Speicher** über **Modbus TCP (z. B. via Elfin EW11)** mit **Home Assistant** – und publiziert die Daten über **MQTT**.
 
-## 🔧 Voraussetzungen
+Es nutzt das Open-Source-Tool [`modbus2mqtt`](https://github.com/daniel-sanders/modbus2mqtt) und macht es als **vollständig UI-konfigurierbares Add-on** für HA verfügbar.
 
-- Home Assistant OS (HassOS) mit Supervisor
-- MQTT Broker (z. B. Mosquitto)
-- Elfin EW11 RS485-WiFi-Adapter
-- Verbindungskabel RS485 → Marstek:
-  - JST XH 2.54, 6-polig, typisches Mapping:
-    - Pin 1 (Rot) → RS485 A (Elfin: Pin 1)
-    - Pin 2 (Schwarz) → RS485 B (Elfin: Pin 4)
-    - Pin 5 (Schwarz) → +5V (Elfin: Pin 2)
-    - Pin 6 (Schwarz) → GND (Elfin: Pin 3)
+---
 
-## 🧰 Installation
+## 🔌 Zu Home Assistant hinzufügen
 
-1. Erstelle im Home Assistant Ordner `/config/addons/marstek_modbus2mqtt`
-2. Kopiere diese Dateien dorthin:
-   - `config.json`
-   - `config.yaml`
-3. Gehe in Home Assistant:
-   - Einstellungen → Add-ons → „⋮“ → Nach Add-ons suchen / Neu laden
-4. Installiere das Add-on
-5. Konfiguriere im UI:
-   - IP des Elfin EW11
-   - MQTT-Broker Host/IP
-6. Starte das Add-on
+[![Installieren in Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https://github.com/kleimj1/marstek-modbus2mqtt)
 
-## 🔎 Was wird veröffentlicht?
+---
 
-- Batterie-SoC
-- Lade-/Entladeleistung
-- Spannung, Strom (DC & AC)
-- MQTT Topics mit automatischer Home Assistant-Erkennung
+## 🧰 Installation (nach Klick auf den Button)
 
-## ✏️ Beispielhafte MQTT Topics
+1. Öffne **Einstellungen → Add-ons → Add-on-Store**
+2. Scrolle nach unten zu deinem Repository: **Marstek Add-ons**
+3. Klicke auf das Add-on **„Marstek Modbus2MQTT Bridge“**
+4. Klicke auf **Installieren**
+5. Öffne die Add-on-Konfiguration:
+   - Trage die IP deines **Elfin EW11** ein (`modbus_host`)
+   - Trage den MQTT-Broker ein (`mqtt_host`)
+6. **Starte das Add-on**
+7. Die Sensoren erscheinen automatisch via **MQTT Discovery** in Home Assistant
 
-- `marstek/battery_soc/state`
-- `marstek/soc_target/set` (zum Schreiben)
+---
 
-## 💡 Weitere Infos
+## 📡 Unterstützte Sensoren
 
-Projekt basiert auf [`modbus2mqtt`](https://github.com/daniel-sanders/modbus2mqtt) von Daniel Sanders.
+- Batterie SoC (`%`)
+- Lade-/Entladeleistung (`W`)
+- Spannung / Strom (DC & AC)
+- Ziel-SoC & Power über MQTT setzbar
+- MQTT Topics: `marstek/<sensor>/state` & `.../set`
+
+---
+
+## 🔌 Elfin EW11 Verkabelung (Beispiel)
+
+| Marstek Pin | Funktion       | Elfin Pin |
+|-------------|----------------|-----------|
+| Pin 1 (Rot) | RS485 A        | Pin 1     |
+| Pin 2       | RS485 B        | Pin 4     |
+| Pin 5       | +5V (Versorgung) | Pin 2     |
+| Pin 6       | GND            | Pin 3     |
+
+---
+
+## ⚙️ Basistechnologie
+
+Dieses Add-on verwendet:
+
+- 🧠 [`modbus2mqtt`](https://github.com/daniel-sanders/modbus2mqtt) als Backend
+- 🔧 Alpine-basiertes eigenes Docker-Image
+- 🧾 Konfigurierbare Vorlage mit Platzhaltern (`config_template.yaml`)
+- 🔄 UI-Integration via `config.json` für Host, Port etc.
+
+---
+
+## 👨‍🔧 Maintainer
+
+> Erstellt von [kleimj1](https://github.com/kleimj1) – Feel free to contribute or fork!
+
+---
+
+**Viel Spaß beim Energiemanagement mit Home Assistant!**
