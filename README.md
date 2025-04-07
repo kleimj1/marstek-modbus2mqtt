@@ -52,9 +52,9 @@ Es basiert auf [`modbus2mqtt`](https://github.com/daniel-sanders/modbus2mqtt) un
 ## 🧰 RS485 Verkabelung Marstek Venus → Elfin EW11
 
 📸 **Bilder:**  
-![Verkabelung](https://tweakers.net/i/HxQPVBgzaFSlPcM7S-LYZgotdPQ=/800x/filters:strip_icc():strip_exif()/f/image/4OWec9NjB4y9qqK5ucBPodmY.jpg?f=fotoalbum_large)
+![Verkabelung zum Elfin](https://tweakers.net/i/HxQPVBgzaFSlPcM7S-LYZgotdPQ=/800x/filters:strip_icc():strip_exif()/f/image/4OWec9NjB4y9qqK5ucBPodmY.jpg?f=fotoalbum_large)
 
-![Verkabelung](https://tweakers.net/i/HxQPVBgzaFSlPcM7S-LYZgotdPQ=/800x/filters:strip_icc():strip_exif()/f/image/4OWec9NjB4y9qqK5ucBPodmY.jpg?f=fotoalbum_large)
+![Stecker am Marstek](https://tweakers.net/i/VJSzA3OlRkSVQ53RXRg0djWJyWE=/fit-in/4920x3264/filters:max_bytes(3145728):no_upscale():strip_icc():strip_exif()/f/image/qPoxQA6Q5xHhtobnB6xdHhNQ.jpg?f=user_large)
 **Stecken Sie das Kabel wie folgt:**
 
 | Venus Pin | Bedeutung        | Elfin EW11 Pin |
