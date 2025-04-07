@@ -1,8 +1,8 @@
 # Marstek Modbus2MQTT Bridge
 
-Dieses Add-on verbindet deinen **Marstek Venus / Duravolt Speicher** über **Modbus TCP (z. B. via Elfin EW11)** mit **Home Assistant** – und publiziert die Daten über **MQTT**.
+Dieses Add-on verbindet deinen **Marstek Venus / Duravolt Heimspeicher** mit **Home Assistant** über **Modbus TCP** – z. B. via **Elfin EW11 (RS485 zu WLAN)** – und überträgt die Daten über **MQTT**, inklusive MQTT Discovery für automatische Erkennung.
 
-Es nutzt das Open-Source-Tool [`modbus2mqtt`](https://github.com/daniel-sanders/modbus2mqtt) und macht es als **vollständig UI-konfigurierbares Add-on** für HA verfügbar.
+Es basiert auf [`modbus2mqtt`](https://github.com/daniel-sanders/modbus2mqtt) und ist vollständig über das Home Assistant UI konfigurierbar.
 
 ---
 
@@ -26,42 +26,61 @@ Es nutzt das Open-Source-Tool [`modbus2mqtt`](https://github.com/daniel-sanders/
 
 ---
 
-## 📡 Unterstützte Sensoren
+## 🔋 Unterstützte Sensoren (Auszug)
 
-- Batterie SoC (`%`)
-- Lade-/Entladeleistung (`W`)
-- Spannung / Strom (DC & AC)
-- Ziel-SoC & Power über MQTT setzbar
-- MQTT Topics: `marstek/<sensor>/state` & `.../set`
-
----
-
-## 🔌 Elfin EW11 Verkabelung (Beispiel)
-
-| Marstek Pin | Funktion       | Elfin Pin |
-|-------------|----------------|-----------|
-| Pin 1 (Rot) | RS485 A        | Pin 1     |
-| Pin 2       | RS485 B        | Pin 4     |
-| Pin 5       | +5V (Versorgung) | Pin 2     |
-| Pin 6       | GND            | Pin 3     |
+- `battery_soc` → Ladezustand in %
+- `battery_power` → Lade-/Entladeleistung in Watt
+- `battery_voltage` → Batteriespannung
+- `ac_power`, `ac_current`, `ac_voltage` → Netzseitige Messungen
+- `soc_target`, `force_charge_power`, `force_discharge_power` → Steuerbar via MQTT Topic
 
 ---
 
-## ⚙️ Basistechnologie
+## 🧠 MQTT Topics
 
-Dieses Add-on verwendet:
+| Funktion                       | Topic                                 |
+|-------------------------------|---------------------------------------|
+| SoC lesen                     | `marstek/battery_soc/state`           |
+| SoC-Ziel setzen               | `marstek/soc_target/set`              |
+| Ladeleistung setzen           | `marstek/force_charge_power/set`      |
+| Entladeleistung setzen        | `marstek/force_discharge_power/set`   |
 
-- 🧠 [`modbus2mqtt`](https://github.com/daniel-sanders/modbus2mqtt) als Backend
-- 🔧 Alpine-basiertes eigenes Docker-Image
-- 🧾 Konfigurierbare Vorlage mit Platzhaltern (`config_template.yaml`)
-- 🔄 UI-Integration via `config.json` für Host, Port etc.
+→ Automatisch via **Home Assistant MQTT Discovery** erkannt.
+
+---
+
+## 🧰 RS485 Verkabelung Marstek Venus → Elfin EW11
+
+📸 **Bild:**  
+![Verkabelung](https://tweakers.net/i/HxQPVBgzaFSlPcM7S-LYZgotdPQ=/800x/filters:strip_icc():strip_exif()/f/image/4OWec9NjB4y9qqK5ucBPodmY.jpg?f=fotoalbum_large)
+
+**Stecken Sie das Kabel wie folgt:**
+
+| Venus Pin | Bedeutung        | Elfin EW11 Pin |
+|-----------|------------------|----------------|
+| 1 (Rot)   | RS485 A          | 1              |
+| 2 (Schwarz) | RS485 B        | 4              |
+| 3 (Schwarz) | Nicht verwendet| –              |
+| 4 (leer)  | –                | –              |
+| 5 (Schwarz) | +5V Strom      | 2              |
+| 6 (Schwarz) | GND            | 3              |
+
+> ⚠️ **Hinweis:** Der Elfin EW11 wird direkt über die RS485-Leitung mit 5V versorgt – keine externe Stromversorgung notwendig!
+
+---
+
+## ⚙️ Add-on Technologie
+
+- Eigenes Docker-Image basierend auf Alpine
+- Automatische `config.yaml`-Generierung via UI
+- Verwendet [`modbus2mqtt`](https://github.com/daniel-sanders/modbus2mqtt)
 
 ---
 
 ## 👨‍🔧 Maintainer
 
-> Erstellt von [kleimj1](https://github.com/kleimj1) – Feel free to contribute or fork!
+> Erstellt von [kleimj1](https://github.com/kleimj1) – Feedback willkommen!
 
 ---
 
-**Viel Spaß beim Energiemanagement mit Home Assistant!**
+Viel Spaß beim Energiemanagement mit Home Assistant + Marstek 💚⚡
