@@ -1,0 +1,16 @@
+mqtt:
+  host: __MQTT_HOST__
+  port: __MQTT_PORT__
+  client_id: marstek-bridge
+  base_topic: marstek
+  discovery_prefix: homeassistant
+  retain: true
+  qos: 0
+
+modbus:
+  type: tcp
+  host: __MODBUS_HOST__
+  port: __MODBUS_PORT__
+  unit_id: 1
+
+# danach folgen deine Sensoren wie gehabt…
