@@ -54,7 +54,7 @@ Es basiert auf [`modbus2mqtt`](https://github.com/daniel-sanders/modbus2mqtt) un
 📸 **Bilder:**  
 ![Verkabelung](https://tweakers.net/i/HxQPVBgzaFSlPcM7S-LYZgotdPQ=/800x/filters:strip_icc():strip_exif()/f/image/4OWec9NjB4y9qqK5ucBPodmY.jpg?f=fotoalbum_large)
 
-![Verkabelung]([https://tweakers.net/i/HxQPVBgzaFSlPcM7S-LYZgotdPQ=/800x/filters:strip_icc():strip_exif()/f/image/4OWec9NjB4y9qqK5ucBPodmY.jpg?f=fotoalbum_large])
+![Verkabelung](https://tweakers.net/i/HxQPVBgzaFSlPcM7S-LYZgotdPQ=/800x/filters:strip_icc():strip_exif()/f/image/4OWec9NjB4y9qqK5ucBPodmY.jpg?f=fotoalbum_large)
 **Stecken Sie das Kabel wie folgt:**
 
 | Venus Pin | Bedeutung        | Elfin EW11 Pin |
