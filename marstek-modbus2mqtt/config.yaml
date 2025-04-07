@@ -1,0 +1,61 @@
+mqtt:
+  host: core-mosquitto  # oder IP deines MQTT-Brokers
+  port: 1883
+  client_id: marstek-bridge
+  base_topic: marstek
+  discovery_prefix: homeassistant
+  retain: true
+  qos: 0
+
+modbus:
+  type: tcp
+  host: 192.168.178.42   # IP des ELFIN EW11
+  port: 502
+  unit_id: 1
+
+sensors:
+  - name: soc
+    address: 32104
+    type: holding
+    data_type: uint16
+    precision: 0
+    unit: "%"
+    device_class: battery
+    state_class: measurement
+
+  - name: battery_power
+    address: 32102
+    type: holding
+    data_type: int32
+    unit: W
+    state_class: measurement
+    device_class: power
+
+  - name: voltage
+    address: 32100
+    type: holding
+    data_type: uint16
+    scale: 0.01
+    unit: V
+    device_class: voltage
+
+writers:
+  - name: soc_target
+    address: 42011
+    type: holding
+    data_type: uint16
+
+  - name: force_charge_mode
+    address: 42010
+    type: holding
+    data_type: uint16
+
+  - name: force_charge_power
+    address: 42020
+    type: holding
+    data_type: uint16
+
+  - name: force_discharge_power
+    address: 42021
+    type: holding
+    data_type: uint16
