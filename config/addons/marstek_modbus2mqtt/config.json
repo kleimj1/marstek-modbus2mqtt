@@ -1,11 +1,12 @@
 {
   "name": "Marstek Modbus2MQTT Bridge",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "slug": "marstek_modbus2mqtt",
   "description": "Publishes Marstek battery data over MQTT using Modbus TCP (via Elfin EW11)",
   "arch": ["amd64", "armv7", "aarch64"],
   "startup": "application",
   "boot": "auto",
+  "init": false,
   "options": {
     "modbus_host": "192.168.178.42",
     "modbus_port": 502,
@@ -18,5 +19,7 @@
     "mqtt_host": "str",
     "mqtt_port": "int"
   },
-  "image": "ghcr.io/daniel-sanders/modbus2mqtt"
+  "webui": "http://[HOST]:[PORT:80]",
+  "ports": {},
+  "map": ["config:rw"]
 }
