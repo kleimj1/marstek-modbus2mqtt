@@ -1,8 +1,0 @@
-version: '3'
-services:
-  marstek2mqtt:
-    image: ghcr.io/daniel-sanders/modbus2mqtt
-    container_name: marstek2mqtt
-    restart: unless-stopped
-    volumes:
-      - ./config.yaml:/config.yaml
