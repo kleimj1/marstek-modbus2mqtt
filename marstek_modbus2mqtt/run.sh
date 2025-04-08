@@ -18,4 +18,8 @@ sed "s|__MODBUS_HOST__|$MODBUS_HOST|g;
      s|__MQTT_HOST__|$MQTT_HOST|g;
      s|__MQTT_PORT__|$MQTT_PORT|g" /config_template.yaml > $CONFIG_FILE
 
-modbus2mqtt -c $CONFIG_FILE
+echo "[INFO] Generated config.yaml:"
+cat $CONFIG_FILE
+
+echo "[INFO] Launching modbus2mqtt with --config $CONFIG_FILE..."
+modbus2mqtt --config $CONFIG_FILE
