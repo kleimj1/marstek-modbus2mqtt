@@ -13,89 +13,90 @@ modbus:
   port: __MODBUS_PORT__
   unit_id: 1
 
-pollers:
-  - name: battery_soc
-    type: poller
-    address: 32104
-    modbus_type: holding
-    data_type: uint16
-    unit: "%"
-    device_class: battery
-    state_class: measurement
+# Alles auf Root-Level, flache Liste
+- name: battery_soc
+  type: poller
+  address: 32104
+  modbus_type: holding
+  data_type: uint16
+  unit: "%"
+  device_class: battery
+  state_class: measurement
 
-  - name: battery_power
-    type: poller
-    address: 32102
-    modbus_type: holding
-    data_type: int32
-    unit: "W"
-    device_class: power
-    state_class: measurement
+- name: battery_power
+  type: poller
+  address: 32102
+  modbus_type: holding
+  data_type: int32
+  unit: "W"
+  device_class: power
+  state_class: measurement
 
-  - name: battery_voltage
-    type: poller
-    address: 32100
-    modbus_type: holding
-    data_type: uint16
-    scale: 0.01
-    unit: "V"
-    device_class: voltage
+- name: battery_voltage
+  type: poller
+  address: 32100
+  modbus_type: holding
+  data_type: uint16
+  scale: 0.01
+  unit: "V"
+  device_class: voltage
 
-  - name: battery_current
-    type: poller
-    address: 32101
-    modbus_type: holding
-    data_type: int16
-    scale: 0.01
-    unit: "A"
-    device_class: current
+- name: battery_current
+  type: poller
+  address: 32101
+  modbus_type: holding
+  data_type: int16
+  scale: 0.01
+  unit: "A"
+  device_class: current
 
-  - name: ac_voltage
-    type: poller
-    address: 32200
-    modbus_type: holding
-    data_type: uint16
-    scale: 0.1
-    unit: "V"
-    device_class: voltage
+- name: ac_voltage
+  type: poller
+  address: 32200
+  modbus_type: holding
+  data_type: uint16
+  scale: 0.1
+  unit: "V"
+  device_class: voltage
 
-  - name: ac_current
-    type: poller
-    address: 32201
-    modbus_type: holding
-    data_type: int16
-    scale: 0.01
-    unit: "A"
-    device_class: current
+- name: ac_current
+  type: poller
+  address: 32201
+  modbus_type: holding
+  data_type: int16
+  scale: 0.01
+  unit: "A"
+  device_class: current
 
-  - name: ac_power
-    type: poller
-    address: 32202
-    modbus_type: holding
-    data_type: int32
-    unit: "W"
-    device_class: power
+- name: ac_power
+  type: poller
+  address: 32202
+  modbus_type: holding
+  data_type: int32
+  unit: "W"
+  device_class: power
 
-  - name: soc_target
-    type: writer
-    address: 42011
-    modbus_type: holding
-    data_type: uint16
+# Writer
+- name: soc_target
+  type: writer
+  address: 42011
+  modbus_type: holding
+  data_type: uint16
 
-  - name: force_charge_mode
-    type: writer
-    address: 42010
-    modbus_type: holding
-    data_type: uint16
+- name: force_charge_mode
+  type: writer
+  address: 42010
+  modbus_type: holding
+  data_type: uint16
 
-  - name: force_charge_power
-    type: writer
-    address: 42020
-    modbus_type: holding
-    data_type: uint16
+- name: force_charge_power
+  type: writer
+  address: 42020
+  modbus_type: holding
+  data_type: uint16
 
-  - name: force_discharge_power
-    type: writer
-    address: 42021
-    modbus_type: holding
-    data_type: uint16
+- name: force_discharge_power
+  type: writer
+  address: 42021
+  modbus_type: holding
+  data_type: uint16
