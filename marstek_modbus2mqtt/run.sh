@@ -16,6 +16,6 @@ CONFIG_FILE="/config/config.yaml"
 sed "s|__MODBUS_HOST__|$MODBUS_HOST|g;
      s|__MODBUS_PORT__|$MODBUS_PORT|g;
      s|__MQTT_HOST__|$MQTT_HOST|g;
-     s|__MQTT_PORT__|$MQTT_PORT|g" /config/config_template.yaml > $CONFIG_FILE
+     s|__MQTT_PORT__|$MQTT_PORT|g" /config_template.yaml > $CONFIG_FILE
 
 modbus2mqtt -c $CONFIG_FILE
