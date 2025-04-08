@@ -13,7 +13,7 @@ modbus:
   port: __MODBUS_PORT__
   unit_id: 1
 
-sensors:
+pollers:
   - name: battery_soc
     type: poll
     address: 32104
@@ -76,7 +76,6 @@ sensors:
     unit: "W"
     device_class: power
 
-writers:
   - name: soc_target
     type: writer
     address: 42011
