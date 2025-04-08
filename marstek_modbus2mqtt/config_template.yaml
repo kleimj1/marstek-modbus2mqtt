@@ -1,19 +1,18 @@
-mqtt:
-  host: __MQTT_HOST__
-  port: __MQTT_PORT__
+- type: mqtt
+  host: core-mosquitto
+  port: 1883
   client_id: marstek-bridge
   base_topic: marstek
   discovery_prefix: homeassistant
   retain: true
   qos: 0
 
-modbus:
-  type: tcp
-  host: __MODBUS_HOST__
-  port: __MODBUS_PORT__
+- type: modbus
+  mode: tcp
+  host: 192.168.178.42
+  port: 502
   unit_id: 1
 
-# Alles auf Root-Level, flache Liste
 - name: battery_soc
   type: poller
   address: 32104
@@ -76,7 +75,7 @@ modbus:
   unit: "W"
   device_class: power
 
-# Writer
+# Writer-Register
 - name: soc_target
   type: writer
   address: 42011
