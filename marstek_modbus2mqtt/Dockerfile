@@ -1,11 +1,8 @@
 FROM alpine:3.18
 
-# Installiere Python, pip, bash, jq
-RUN apk add --no-cache python3 py3-pip bash jq git \
-  && pip install git+https://github.com/daniel-sanders/modbus2mqtt@main
+RUN apk add --no-cache python3 py3-pip bash jq \
+  && pip install modbus2mqtt
 
-
-# Kopiere Startskript und Konfiguration
 COPY run.sh /run.sh
 COPY config_template.yaml /config_template.yaml
 RUN chmod +x /run.sh
