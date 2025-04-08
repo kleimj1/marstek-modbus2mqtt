@@ -15,7 +15,7 @@ modbus:
 
 pollers:
   - name: battery_soc
-    type: poll
+    type: poller
     address: 32104
     modbus_type: holding
     data_type: uint16
@@ -24,7 +24,7 @@ pollers:
     state_class: measurement
 
   - name: battery_power
-    type: poll
+    type: poller
     address: 32102
     modbus_type: holding
     data_type: int32
@@ -33,7 +33,7 @@ pollers:
     state_class: measurement
 
   - name: battery_voltage
-    type: poll
+    type: poller
     address: 32100
     modbus_type: holding
     data_type: uint16
@@ -42,7 +42,7 @@ pollers:
     device_class: voltage
 
   - name: battery_current
-    type: poll
+    type: poller
     address: 32101
     modbus_type: holding
     data_type: int16
@@ -51,7 +51,7 @@ pollers:
     device_class: current
 
   - name: ac_voltage
-    type: poll
+    type: poller
     address: 32200
     modbus_type: holding
     data_type: uint16
@@ -60,7 +60,7 @@ pollers:
     device_class: voltage
 
   - name: ac_current
-    type: poll
+    type: poller
     address: 32201
     modbus_type: holding
     data_type: int16
@@ -69,7 +69,7 @@ pollers:
     device_class: current
 
   - name: ac_power
-    type: poll
+    type: poller
     address: 32202
     modbus_type: holding
     data_type: int32
